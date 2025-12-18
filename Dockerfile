@@ -2,7 +2,7 @@
 FROM alpine:latest
 
 # OCI labels
-LABEL maintainer="YourName"
+LABEL maintainer="SilverKnightKMA"
 LABEL description="Periodic Audio Integrity Checker (FLAC/MP3/M4A) with Discord Alerts"
 
 # Install dependencies

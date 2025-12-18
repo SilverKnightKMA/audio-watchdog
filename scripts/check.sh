@@ -89,12 +89,22 @@ cleanup_db() {
 
 # Print Summary
 show_statistics() {
-    echo "--- STATISTICS ---"
+    echo "[$(date)] [STATS] Summary after cleanup:"
     local total=$(sqlite3 -batch "$DB_PATH" "SELECT count(*) FROM file_checks;")
     local corrupt=$(sqlite3 -batch "$DB_PATH" "SELECT count(*) FROM file_checks WHERE status = 'CORRUPT';")
-    echo "Total Tracked : $total"
-    echo "Total Corrupt : $corrupt"
-    echo "------------------"
+    echo "   -----------------------------------------"
+    echo "   Total tracked files : $total"
+    echo "   Corrupt files       : $corrupt"
+    echo "   -----------------------------------------"
+    echo "   Breakdown by extension:"
+    sqlite3 -batch -noheader "$DB_PATH" "SELECT filepath FROM file_checks;" | \
+    sed 's/.*\.//' | \
+    tr '[:upper:]' '[:lower:]' | \
+    sort | uniq -c | sort -nr | \
+    while read count ext; do
+        echo "       - $ext : $count file(s)"
+    done
+    echo "   -----------------------------------------"
 }
 
 # Main Loop
