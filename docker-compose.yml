@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   audio-watchdog:
-    image: ghcr.io/SilverKnightKMA/audio-watchdog:1.0
+    image: ghcr.io/SilverKnightKMA/audio-watchdog:1.0.1
     container_name: audio-watchdog
     environment:
       PUID: 1031
