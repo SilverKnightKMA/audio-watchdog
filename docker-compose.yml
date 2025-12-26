@@ -1,6 +1,6 @@
 services:
   audio-watchdog:
-    image: ghcr.io/silverknightkma/audio-watchdog:1.0.1
+    image: ghcr.io/silverknightkma/audio-watchdog:v1.0.2
     container_name: audio-watchdog
     environment:
       PUID: ${PUID}
