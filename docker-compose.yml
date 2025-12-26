@@ -1,11 +1,10 @@
-version: '3.8'
 services:
   audio-watchdog:
-    image: ghcr.io/SilverKnightKMA/audio-watchdog:1.0.1
+    image: ghcr.io/silverknightkma/audio-watchdog:1.0.1
     container_name: audio-watchdog
     environment:
-      PUID: 1031
-      PGID: 65536
+      PUID: ${PUID}
+      PGID: ${PGID}
       DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
       MUSIC_DIR: /music
       LOG_FILE: /logs/corrupt_files.log
